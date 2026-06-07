@@ -17,11 +17,10 @@
 #     cmake-args: -DCONFIG_ZMK_STUDIO=y
 #     artifact-name: corne_left_with_studio
 #
-# ZMK 공식 공장 초기화 모듈을 추가한 빌드 명세서
 include:
   - shield: corne_left
     board: nice_nano_v2
+    snippet: studio-rpc
   - shield: corne_right
     board: nice_nano_v2
-  - shield: settings_reset
-    board: nice_nano_v2
+    snippet: studio-rpc
