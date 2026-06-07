@@ -17,4 +17,9 @@
 #     cmake-args: -DCONFIG_ZMK_STUDIO=y
 #     artifact-name: corne_left_with_studio
 #
----
+# ZMK 공식 표준 빌드 명세서 (Corne 6컬럼 + nice_nano_v2)
+include:
+  - shield: corne_left
+    board: nice_nano_v2
+  - shield: corne_right
+    board: nice_nano_v2
