@@ -18,9 +18,7 @@
 #     artifact-name: corne_left_with_studio
 #
 include:
-  - shield: corne_left
+  - shield: corne_left nice_oled
     board: nice_nano_v2
-    snippet: studio-rpc
-  - shield: corne_right
+  - shield: corne_right nice_oled
     board: nice_nano_v2
-    snippet: studio-rpc
