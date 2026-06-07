@@ -1,50 +1,67 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/outputs.h>
 
 / {
-    keymap {
-        compatible = "zmk,keymap";
+        keymap {
+                compatible = "zmk,keymap";
 
-        // [레이어 0] 기본 레이어: 우측 엄지 탭 시 한영키(RALT), 홀드 시 레이어 1 진입
-        default_layer {
-            bindings = <
-&kp TAB   &kp Q &kp W &kp E &kp R &kp T      &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-&kp LCTRL &kp A &kp S &kp D &kp F &kp G      &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-&kp LSHFT &kp Z &kp X &kp C &kp V &kp B      &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ENTER
-                &kp LALT &kp LGUI &mo 1      &mo 2 &kp SPACE &lt 1 RALT
-            >;
-        };
+                default_layer {
+                        display-name = "Default Layer";
+// -----------------------------------------------------------------------------------------
+// |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
+// | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
+// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
+//                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
+                        bindings = <
+   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
+   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
+   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
+                  &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
+                        >;
+                };
+                lower_layer {
+                        display-name = "Lower Layer";
+// -----------------------------------------------------------------------------------------
+// |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BSPC |
+// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     | STUD |
+// | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
+//                    | GUI |     | SPC |   | ENT |     | ALT |
+                        bindings = <
+   &kp TAB    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
+   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &studio_unlock
+   &kp LSHFT  &trans       &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &trans
+                                    &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
+                        >;
+                };
 
-        // [레이어 1] 숫자 및 기호 레이어
-        number_layer {
-            bindings = <
-&kp ESC   &kp N1 &kp N2 &kp N3 &kp N4 &kp N5      &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp DEL
-&trans    &trans &trans &trans &trans &trans      &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-&trans    &trans &trans &trans &trans &trans      &trans   &trans   &trans &trans    &trans &trans
-                        &trans &trans &trans      &trans   &trans   &trans
-            >;
-        };
+                raise_layer {
+                        display-name = "Raise Layer";
+// -----------------------------------------------------------------------------------------
+// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BSPC |
+// | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
+// | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
+//                    | GUI |     | SPC |   | ENT |     | ALT |
+                        bindings = <
+   &kp  TAB  &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp BSPC
+   &kp LCTRL &trans   &trans &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &kp GRAVE
+   &kp LSHFT &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &kp TILDE
+                             &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
+                        >;
+                };
 
-        // [레이어 2] 시스템 및 채널 제어 레이어
-        system_layer {
-            bindings = <
-&none      &none        &none        &none        &none        &none              &none          &none        &none        &none          &none &none
-&bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4       &none          &none        &none        &studio_unlock &none &none
-&none      &none        &none        &none        &none        &none              &none          &none        &none        &none          &none &none
-                                     &trans       &trans       &trans             &trans         &trans       &trans
-            >;
-        };
+                extra1 {
+                        status = "reserved";
+                };
 
-        // [레이어 3] ZMK Studio 전용 예약 공간 1 (초기에는 비어있음)
-        extra1 {
-            status = "reserved";
+                extra2 {
+                        status = "reserved";
+                };
         };
-
-        // [레이어 4] ZMK Studio 전용 예약 공간 2 (초기에는 비어있음)
-        extra2 {
-            status = "reserved";
-        };
-    };
-};    
+};
