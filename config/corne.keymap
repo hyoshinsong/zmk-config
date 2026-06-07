@@ -2,13 +2,12 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
-#include <dt-bindings/zmk/ext_power.h>
 
 / {
     keymap {
         compatible = "zmk,keymap";
 
-        // [레이어 0] 기본 레이어: 우측 엄지 탭핑 시 한영키(RALT), 홀드 시 레이어 1 진입
+        // [레이어 0] 기본 레이어: 우측 엄지 탭 시 한영키(RALT), 홀드 시 레이어 1 진입
         default_layer {
             bindings = <
 &kp TAB   &kp Q &kp W &kp E &kp R &kp T      &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
@@ -28,14 +27,24 @@
             >;
         };
 
-        // [레이어 2] 시스템 및 블루투스 제어 레이어
+        // [레이어 2] 시스템 및 채널 제어 레이어
         system_layer {
             bindings = <
-&none      &none        &none        &none        &none        &none              &none &none &none &none &none &none
-&bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4       &none &none &none &none &none &none
-&none      &none        &none        &none        &none        &none              &none &none &none &none &none &none
-                                     &trans       &trans       &trans             &trans &trans &trans
+&none      &none        &none        &none        &none        &none              &none          &none        &none        &none          &none &none
+&bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4       &out OUT_USB   &out OUT_BLE &out OUT_TOG &studio_unlock &none &none
+&none      &none        &none        &none        &none        &none              &none          &none        &none        &none          &none &none
+                                     &trans       &trans       &trans             &trans         &trans       &trans
             >;
         };
+
+        // [레이어 3] ZMK Studio 전용 예약 공간 1 (초기에는 비어있음)
+        extra1 {
+            status = "reserved";
+        };
+
+        // [레이어 4] ZMK Studio 전용 예약 공간 2 (초기에는 비어있음)
+        extra2 {
+            status = "reserved";
+        };
     };
-};
+};    
