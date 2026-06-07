@@ -17,9 +17,10 @@
 #     cmake-args: -DCONFIG_ZMK_STUDIO=y
 #     artifact-name: corne_left_with_studio
 #
-# zmk-nice-oled 플러그인을 안전하게 주입받는 정석 빌드 명세서
 include:
   - shield: corne_left
     board: nice_nano_v2
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
   - shield: corne_right
     board: nice_nano_v2
