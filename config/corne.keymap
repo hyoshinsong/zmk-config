@@ -2,6 +2,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/rgb.h>
+#include <dt-bindings/zmk/ext_power.h> // 외부 전원 강제 제어 헤더 추가
 
 / {
     keymap {
@@ -27,12 +28,12 @@
             >;
         };
 
-        // [레이어 2] 시스템 및 RGB 백라이트 제어 레이어
+        // [레이어 2] 시스템 및 외부 전원 / RGB 백라이트 제어 레이어
         system_layer {
             bindings = <
-&none      &none           &none           &none           &none           &none                &none           &none           &none           &none           &none           &none
-&bt BT_CLR &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4         &rgb_ug RGB_TOG &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRI &none           &none
-&none      &none           &none           &none           &none           &none                &rgb_ug RGB_EFF &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_BRD &none           &none
+&none      &none           &none           &none           &none           &none                &none           &none           &none           &none           &none            &none
+&bt BT_CLR &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4         &rgb_ug RGB_TOG &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRI &ext_power EP_ON &none
+&none      &none           &none           &none           &none           &none                &rgb_ug RGB_EFF &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_BRD &ext_power EP_OFF &none
                                            &trans          &trans          &trans               &trans          &trans          &trans
             >;
         };
