@@ -28,7 +28,7 @@
             >;
         };
 
-        // [레이어 2] 시스템 및 블루투스 제어 레이어 (LED 기능 완전 삭제)
+        // [레이어 2] 시스템 및 블루투스 제어 레이어
         system_layer {
             bindings = <
 &none      &none        &none        &none        &none        &none              &none &none &none &none &none &none
