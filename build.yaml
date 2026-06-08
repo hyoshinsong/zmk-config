@@ -24,3 +24,7 @@ include:
     cmake-args: -DCONFIG_ZMK_STUDIO=y
   - shield: corne_right
     board: nice_nano_v2
+
+# [추가] MCU 내부 적층 메모리를 완전 포맷하는 리셋 파일 생성 명령
+  - board: nice_nano_v2
+    shield: settings_reset
